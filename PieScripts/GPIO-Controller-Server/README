@@ -1,5 +1,4 @@
-Description:
-Scripts that are run on Raspberry Pi
+# Scripts that are run on Raspberry Pi
 
 LED connected to GPIO 18 is controlled using the Scripts
 
