@@ -1,0 +1,12 @@
+Description:
+Scripts that are run on Raspberry Pi
+
+LED connected to GPIO 18 is controlled using the Scripts
+
+Note: Use Virtual Environment
+
+Instructions:
+1. Create a Virtual Environment with `python -m virtualenv myvenv`
+2. Activate the Environment with `source myvenv/bin/activate`
+3. Install the requirements with `pip install -r requirements.txt`
+4. Start the process with `python controller.py`
