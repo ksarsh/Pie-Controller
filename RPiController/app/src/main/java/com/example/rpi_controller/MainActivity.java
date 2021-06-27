@@ -21,8 +21,6 @@ import java.net.UnknownHostException;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     public static String CMD = "0";
 
     // Create a Dictionary to store time & CPU temperature
-    Map<Instant, Float> TimeTempMap = new HashMap<Instant, Float>();
+    Map<Long, Float> TimeTempMap = new HashMap<Long, Float>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void insertKeyValue(float fTemp){
         Instant instant = Instant.now();
-        TimeTempMap.put(instant, fTemp);
+        TimeTempMap.put(instant.toEpochMilli(), fTemp);
     }
 
     public class SocketAsyncTask extends AsyncTask<Void,Void,Void>
