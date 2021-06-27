@@ -77,14 +77,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("Arjun Plotter Test", "Hello Plotter");
-                // startActivity(new Intent(MainActivity.this, Plotter.class));
                 Intent intent = new Intent(MainActivity.this, Plotter.class);
-//                String[] str1 = {"Arj","jun","Sha","nkar","ks"};
-//                double[] num2 = {6.0,7.0,8.0,9.0,10.0};
-//
-//                intent.putExtra("Str", str1);
-//                intent.putExtra("Flt", num2);
-
                 intent.putExtra("HashMap", (Serializable) TimeTempMap);
                 startActivity(intent);
             }
@@ -94,32 +87,16 @@ public class MainActivity extends AppCompatActivity {
     public void getIpAndPort()
     {
         String ipAndPort = ipAddr.getText().toString();
-        Log.d("Arjun IP Test", "IP: " + ipAndPort);
         String temp[] = ipAndPort.split(":");
         wifiIP = temp[0];
         wifiPort = Integer.valueOf(temp[1]);
-        Log.d("Arjun IP Test", "IP: " + wifiIP);
-        Log.d("Arjun IP Test", "Port: " + wifiPort);
+        Log.d("Arjun IP Test", "IP: " + wifiIP + " Port: " + wifiPort);
     }
-
-//        ArrayList<Instant> sortedInstant = new ArrayList<Instant>(TimeTempRecvMap.keySet());
-//        Collections.sort(sortedInstant);
-
-//    public ArrayList<Float> sortTemp(ArrayList<Instant> sortedInstant)
-//    {
-//        ArrayList<Float> sortedTemp = new ArrayList<>()
-//    }
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void insertKeyValue(float fTemp){
         Instant instant = Instant.now();
         TimeTempMap.put(instant, fTemp);
-//        ArrayList<Instant> sortedKeys = new ArrayList<Instant>(TimeTempMap.keySet());
-//        Collections.sort(sortedKeys);
-//        for(Instant inst : sortedKeys)
-//            Log.d("Arjun Dict Test", "key: " + inst + " Value: " + TimeTempMap.get(inst));
     }
 
     public class SocketAsyncTask extends AsyncTask<Void,Void,Void>

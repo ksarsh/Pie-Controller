@@ -12,9 +12,8 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/tempPlot"
-        ap:title="Raspberry Pi Temperature"
+        ap:title="RPi CPU Temperature"
         ap:rangeTitle="Range"
-        ap:domainTitle="Domain"
         />
 
 </LinearLayout>
