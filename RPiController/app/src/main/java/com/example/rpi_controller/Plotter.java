@@ -46,11 +46,13 @@ public class Plotter extends AppCompatActivity {
 //            Log.d("Arjun Intent HM Test", "Time: " + inst + " Temp: " + TimeTempRecvMap.get(inst));
 
         final Instant[] instantLabel = sortInstant();
-        final Number[] timeLabel = {1,2,3,4,5,6,7,8,9,10};
+        final Number[] timeLabel = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
         //double[] tempLabel = {44.2, 45.6, 39.3, 40.4, 46.8, 41.9, 45.7, 48.5, 48.4, 46.7};
         Number[] seriesNumber = {2,4,6,8,10,14,16,18,22,24};
+        final Float[] tempNumber = sortTemp(instantLabel);
 
-        XYSeries tempSeries = new SimpleXYSeries(Arrays.asList(seriesNumber), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series");
+        // XYSeries tempSeries = new SimpleXYSeries(Arrays.asList(seriesNumber), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series");
+        XYSeries tempSeries = new SimpleXYSeries(Arrays.asList(tempNumber), SimpleXYSeries.ArrayFormat.Y_VALS_ONLY, "Series");
 
         LineAndPointFormatter seriesFormat = new LineAndPointFormatter(Color.RED, Color.GREEN, null,null);
 
@@ -62,8 +64,9 @@ public class Plotter extends AppCompatActivity {
             @Override
             public StringBuffer format(Object obj, StringBuffer toAppendTo, FieldPosition pos) {
                 int i = Math.round( ((Number) obj).floatValue());
-                return toAppendTo.append(timeLabel[i]);
-                //return toAppendTo.append(instantLabel[i]);
+                Log.d("Arjun i Test", "i: " + i);
+                //return toAppendTo.append(timeLabel[i]);
+                return toAppendTo.append(instantLabel[i]);
             }
 
             @Override
@@ -86,5 +89,17 @@ public class Plotter extends AppCompatActivity {
             Log.d("Arjun SInstant Test" , " " + inst);
 
         return sortedInstant;
+    }
+
+    public Float[] sortTemp(Instant[] sortedInstant)
+    {
+        int size = TimeTempRecvMap.size();
+        int i = 0;
+        Float[] sortedTemp = new Float[size];
+        for(Instant inst: sortedInstant) {
+            sortedTemp[i] = TimeTempRecvMap.get(inst);
+            i++;
+        }
+        return sortedTemp;
     }
 }
